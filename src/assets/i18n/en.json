@@ -1,0 +1,35 @@
+{
+  "DOCUMENT_LIST": {
+    "SEARCH": {
+      "NO_RESULT": "0 - results found"
+    },
+    "COLUMNS": {
+      "NAME": "Name",
+      "TITLE": "Title",
+      "DESCRIPTION": "Description",
+      "LAST_UPDATED": "Last Updated",
+      "SIZE": "Size",
+      "VERSION": "Version"
+    },
+    "ACTIONS": {
+      "FOLDER": {
+        "DETAILS": "Details",
+        "DETAILS_FORM": "Details(form)",
+        "DOWNLOAD_AS_ZIP": "Download as ZIP",
+        "COPY": "Copy...",
+        "MOVE": "Move...",
+        "DELETE": "Delete"
+      },
+      "DOCUMENT": {
+        "DETAILS": "Details",
+        "DETAILS_FORM": "Details(form)",
+        "DOWNLOAD": "Download",
+        "COPY": "Copy...",
+        "MOVE": "Move...",
+        "MANAGE_VERSIONS": "Manage Versions...",
+        "DELETE": "Delete",
+        "DECLARE_RECORD": "Declare record"
+      }
+    }
+  }
+}
