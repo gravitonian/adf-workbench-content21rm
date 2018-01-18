@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 
 import { NotificationService, ContentService } from '@alfresco/adf-core';
-import { MinimalNodeEntryEntity, RecordEntry } from 'alfresco-js-api';
+import { MinimalNodeEntryEntity } from 'alfresco-js-api';
 import { RmService } from '../../rm/rm.service';
 
 @Component({
@@ -37,10 +37,14 @@ export class MyFilesListPageComponent extends RepositoryListPageComponent implem
     const entry: MinimalNodeEntryEntity = event.value.entry;
     console.log('MyFilesListPageComponent: Declaring document as record: ' + entry.name);
 
-    const record: RecordEntry = this.rmService.declareRecord(entry.id, null);
+    this.rmService.declareRecord(entry.id, null).subscribe((record: any) => {
+      console.log('MyFilesListPageComponent: Record metadata: ' + record.entry, ' | ', record.entry.id);
 
-    this.notificationService.openSnackMessage(
-      `Created Record for '${entry.name}' successfully: ${record}`,
-      8000);
+      this.notificationService.openSnackMessage(
+        `Created Record for '${entry.name}' successfully:  ${record.entry} ' | ' ${record.entry.id}`,
+        8000);
+    });
+
+
   }
 }

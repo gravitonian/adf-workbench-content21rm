@@ -1,59 +1,25 @@
 import { Injectable } from '@angular/core';
 
 import { AlfrescoApiService } from '@alfresco/adf-core';
-import { RecordEntry } from 'alfresco-js-api';
+// import { RecordEntry } from 'alfresco-js-api';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class RmService {
-  gsApiURL: '/api/-default-/public/gs/versions/1';
 
-  constructor(private apiService: AlfrescoApiService) {
-  }
+  constructor(private apiService: AlfrescoApiService) {  }
 
-
-  declareRecord(node: string, opts: any) {
-    this.apiService.getInstance().gsCore.filesApi.declareRecord(node, opts);
+  declareRecord(node: string, opts: any): Observable<any> {
+    return Observable.fromPromise(this.apiService.getInstance().gsCore.filesApi.declareRecord(node, opts)
+      .catch(this.handleError));
   }
 
   private handleError(error: Response): any {
     console.error(error);
     return Observable.throw(error || 'Server error');
   }
-
-/*
-  declareRecord(nodeId: string, opts: any): RecordEntry {
-    opts = opts || {};
-    const postBody = null; // No need to POST content, we are just setting metadata on Node
-
-    // verify the required parameter 'nodeId' is set
-    if (nodeId === undefined || nodeId === null) {
-      throw new Error('Missing the required parameter \'nodeId\' when calling declareRecord');
-    }
-
-
-    const pathParams = {
-      'fileId': nodeId
-    };
-    const queryParams = {
-      'hideRecord': opts['hideRecord'],
-      'include': {},
-      'fields': {}
-    };
-    const headerParams = { };
-    const formParams = { };
-
-    const authNames = ['basicAuth'];
-    const contentTypes = ['application/json'];
-    const accepts = ['application/json'];
-    const returnType = RecordEntry;
-
-    return this.apiService.getInstance().ecmClient.call(
-      this.gsApiURL + '/files/{fileId}/declare', 'POST',
-      pathParams, queryParams, headerParams, formParams, postBody,
-      authNames, contentTypes, accepts, returnType
-    );
-  }*/
 }
 /**
  *

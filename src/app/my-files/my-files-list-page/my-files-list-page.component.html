@@ -45,7 +45,7 @@
       <data-column title="{{'DOCUMENT_LIST.COLUMNS.SIZE' | translate}}" key="content.sizeInBytes" type="fileSize"></data-column>
       <data-column title="{{'DOCUMENT_LIST.COLUMNS.VERSION' | translate}}" key="properties.cm:versionLabel">
         <ng-template let-value="value">
-          <span *ngIf="value">V. {{value}}</span>
+          <span *ngIf="value">V. {{ value }}</span>
         </ng-template>
       </data-column>
     </data-columns>

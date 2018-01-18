@@ -119,6 +119,8 @@ export class RepositoryDetailsPageComponent implements OnInit {
       this.properties.push(this.descProp);
     }
 
+    // rma:filePlanComponent
+
     // Author can be available if extracted during ingestion of content
     if (node.properties && node.properties[RepositoryContentModel.AUTHOR_PROP_QNAME]) {
       const authorProp = new CardViewTextItemModel({
